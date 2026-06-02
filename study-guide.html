@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Citizenship Study Guide — Coyote Legal</title>
+  <meta name="description" content="Download the free U.S. citizenship study guide from Margaret A. Donnelly, P.C." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-top">
+      <a class="logo-link" href="index.html">
+        <img src="assets/images/logo.png" alt="Coyote Legal logo" width="72" height="72" />
+        <span class="firm-name">Margaret A. Donnelly, P.C.</span>
+      </a>
+      <div class="offices">
+        <div>
+          <span class="office-label">Dallas Office</span>
+          <a class="office-phone" href="tel:+12143774845">214.377.4845</a>
+        </div>
+        <div>
+          <span class="office-label">Ft. Worth Office</span>
+          <a class="office-phone" href="tel:+18179846404">817.984.6404</a>
+        </div>
+      </div>
+    </div>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="social.html">Social Feed</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h1 class="section-title">Free Citizenship Study Guide</h1>
+    <p style="margin-bottom:1.5rem;color:var(--text-muted);">Guía de estudio gratuita para la ciudadanía / Free U.S. citizenship study guide from Margaret A. Donnelly, P.C.</p>
+
+    <div id="lead-form">
+      <p style="margin-bottom:1.25rem;color:var(--text-muted);">Enter your information below to download the study guide. By submitting, you consent to receive communications from us, including calls, texts, emails, and prerecorded messages.</p>
+
+      <form id="study-guide-form" action="#" method="post">
+        <div class="form-group">
+          <label for="sg-name">Full Name / Nombre Completo</label>
+          <input type="text" id="sg-name" name="name" required autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="sg-email">Email</label>
+          <input type="email" id="sg-email" name="email" required autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="sg-phone">Phone / Teléfono</label>
+          <input type="tel" id="sg-phone" name="phone" required autocomplete="tel" />
+        </div>
+        <button type="submit" class="btn btn-red">Download Study Guide / Descargar Guía</button>
+        <p class="form-note">Consultations are $125; results vary. See our <a href="disclaimer.html">Disclaimer</a>.</p>
+      </form>
+    </div>
+
+    <div id="download-ready" hidden style="margin-top:2rem;padding:2rem;background:var(--cream);border-radius:4px;text-align:center;">
+      <p style="font-size:1.15rem;margin-bottom:1rem;">Thank you! Your download is ready.</p>
+      <a class="btn btn-red" href="assets/freestudyguide.pdf" download="Coyote-Legal-Citizenship-Study-Guide.pdf">Download PDF</a>
+      <p class="form-note" style="margin-top:1rem;">Need help with your citizenship case? <a href="contact.html">Contact us</a> for a $125 consultation.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Copyright © 2026 Coyotelegal.com</p>
+      <div class="footer-links">
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://adbongo.io" target="_blank" rel="noopener noreferrer">Powered by Adbongo</a>
+      </div>
+    </div>
+    <p class="disclaimer-note">Use of this site constitutes acceptance of our <a href="disclaimer.html">Disclaimer</a>. Consultations are $125; results vary.</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById('study-guide-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = {
+        name: document.getElementById('sg-name').value,
+        email: document.getElementById('sg-email').value,
+        phone: document.getElementById('sg-phone').value,
+        source: 'study-guide',
+        timestamp: new Date().toISOString()
+      };
+      try {
+        var leads = JSON.parse(localStorage.getItem('coyotelegal-leads') || '[]');
+        leads.push(data);
+        localStorage.setItem('coyotelegal-leads', JSON.stringify(leads));
+      } catch (err) { /* storage unavailable */ }
+      document.getElementById('lead-form').hidden = true;
+      document.getElementById('download-ready').hidden = false;
+      window.location.href = 'assets/freestudyguide.pdf';
+    });
+  </script>
+</body>
+</html>

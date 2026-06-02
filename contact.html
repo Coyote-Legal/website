@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Coyote Legal | Margaret A. Donnelly, P.C.</title>
+  <meta name="description" content="Contact Margaret A. Donnelly, P.C. — Dallas and Fort Worth immigration law offices." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-top">
+      <a class="logo-link" href="index.html">
+        <img src="assets/images/logo.png" alt="Coyote Legal logo" width="72" height="72" />
+        <span class="firm-name">Margaret A. Donnelly, P.C.</span>
+      </a>
+      <div class="offices">
+        <div>
+          <span class="office-label">Dallas Office</span>
+          <a class="office-phone" href="tel:+12143774845">214.377.4845</a>
+        </div>
+        <div>
+          <span class="office-label">Ft. Worth Office</span>
+          <a class="office-phone" href="tel:+18179846404">817.984.6404</a>
+        </div>
+      </div>
+    </div>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="social.html">Social Feed</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h1 class="section-title">Contact Us</h1>
+
+    <p style="margin-bottom:1.5rem;color:var(--text-muted);">Schedule a consultation for $125. By submitting this form, you consent to receive communications from us, including calls, texts, emails, and prerecorded messages.</p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Dallas Office</h3>
+        <p>2626 Valley View Lane<br />Dallas, TX 75234</p>
+        <p><a class="office-phone" href="tel:+12143774845">214.377.4845</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>Ft. Worth Office</h3>
+        <p>1500 North Main Street<br />Ft. Worth, TX 76164</p>
+        <p><a class="office-phone" href="tel:+18179846404">817.984.6404</a></p>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Send Us a Message</h2>
+    <form id="contact-form" action="#" method="post">
+      <div class="form-group">
+        <label for="name">Full Name / Nombre Completo</label>
+        <input type="text" id="name" name="name" required autocomplete="name" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone / Teléfono</label>
+        <input type="tel" id="phone" name="phone" required autocomplete="tel" />
+      </div>
+      <div class="form-group">
+        <label for="office">Preferred Office / Oficina Preferida</label>
+        <select id="office" name="office">
+          <option value="dallas">Dallas</option>
+          <option value="fort-worth">Ft. Worth</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Message / Mensaje</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-orange">Submit / Enviar</button>
+      <p class="form-note">Consultations are $125; results vary. See our <a href="disclaimer.html">Disclaimer</a>.</p>
+    </form>
+  </main>
+
+  <a class="study-guide-float btn btn-red" href="study-guide.html">Free Citizenship Study Guide</a>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Copyright © 2026 Coyotelegal.com</p>
+      <div class="footer-links">
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://adbongo.io" target="_blank" rel="noopener noreferrer">Powered by Adbongo</a>
+      </div>
+    </div>
+    <p class="disclaimer-note">Use of this site constitutes acceptance of our <a href="disclaimer.html">Disclaimer</a>. Consultations are $125; results vary.</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var phone = document.getElementById('phone').value;
+      var office = document.getElementById('office').value;
+      var message = document.getElementById('message').value;
+      var subject = encodeURIComponent('Coyote Legal Contact — ' + name);
+      var body = encodeURIComponent(
+        'Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\nOffice: ' + office + '\n\n' + message
+      );
+      window.location.href = 'mailto:baba@coyotelegal.com?subject=' + subject + '&body=' + body;
+    });
+  </script>
+</body>
+</html>
