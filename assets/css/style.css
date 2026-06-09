@@ -79,7 +79,7 @@ a:hover { color: var(--orange); }
 .logo-link:hover { color: inherit; }
 
 .logo-link img {
-  width: 72px;
+  width: 90px;
   height: auto;
 }
 
