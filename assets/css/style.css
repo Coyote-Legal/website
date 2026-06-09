@@ -79,7 +79,7 @@ a:hover { color: var(--orange); }
 .logo-link:hover { color: inherit; }
 
 .logo-link img {
-  width: 90px;
+  width: 120px;
   height: auto;
 }
 
@@ -501,14 +501,44 @@ main {
   gap: 1rem 1.5rem;
 }
 
-.disclaimer-note {
+.footer-disclaimer {
   max-width: var(--max);
-  margin: 0 auto;
-  padding-top: 1rem;
-  margin-top: 1rem;
-  border-top: 1px solid rgba(255,255,255,0.2);
-  font-size: 0.8rem;
-  opacity: 0.85;
+  margin: 0 auto 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.footer-disclaimer-title {
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.25rem;
+  color: var(--tan);
+}
+
+.footer-disclaimer-lang {
+  margin-bottom: 1.25rem;
+}
+
+.footer-disclaimer-lang:last-child {
+  margin-bottom: 0;
+}
+
+.footer-disclaimer-lang h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--tan);
+  margin-bottom: 0.65rem;
+}
+
+.footer-disclaimer-lang p {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  margin-bottom: 0.65rem;
+  opacity: 0.92;
 }
 
 /* Disclaimer page */
