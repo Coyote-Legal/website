@@ -10,14 +10,16 @@
         "url": "https://coyotelegal.com",
         "logo": "https://coyotelegal.com/assets/images/logo.png",
         "image": "https://coyotelegal.com/assets/images/logo.png",
-        "description": "Bilingual immigration law firm serving Hispanic families in Dallas and Fort Worth, Texas. Green cards, citizenship, asylum, family petitions, and work visas.",
+        "description": "Bilingual immigration law firm serving Hispanic families in Dallas, Fort Worth, and clients in Mexico and Latin America. Green cards, citizenship, asylum, family petitions, and work visas.",
         "telephone": "+1-214-377-4845",
         "priceRange": "$$",
         "knowsLanguage": ["en", "es"],
         "areaServed": [
           { "@type": "City", "name": "Dallas", "containedInPlace": { "@type": "State", "name": "Texas" } },
           { "@type": "City", "name": "Fort Worth", "containedInPlace": { "@type": "State", "name": "Texas" } },
-          { "@type": "AdministrativeArea", "name": "Dallas-Fort Worth metroplex" }
+          { "@type": "AdministrativeArea", "name": "Dallas-Fort Worth metroplex" },
+          { "@type": "Country", "name": "Mexico" },
+          { "@type": "Country", "name": "United States" }
         ],
         "serviceType": [
           "Immigration Law",
@@ -73,9 +75,17 @@
         "@id": "https://coyotelegal.com/#website",
         "url": "https://coyotelegal.com",
         "name": "Coyote Legal",
-        "description": "Abogada de inmigración en Dallas y Fort Worth",
+        "description": "Abogada de inmigración en Dallas, Fort Worth y para familias en México",
         "publisher": { "@id": "https://coyotelegal.com/#organization" },
-        "inLanguage": ["es", "en"]
+        "inLanguage": ["es", "en"],
+        "audience": {
+          "@type": "Audience",
+          "geographicArea": [
+            { "@type": "Country", "name": "Mexico" },
+            { "@type": "Country", "name": "United States" }
+          ],
+          "audienceType": "Immigration law clients"
+        }
       }
     ]
   }

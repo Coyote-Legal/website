@@ -17,19 +17,25 @@ for filename, meta in seo.items():
   <meta name="description" content="{meta["description"]}" />
   <meta name="robots" content="{robots}" />
   <link rel="canonical" href="{canonical}" />
+  <link rel="alternate" hreflang="es-MX" href="{canonical}" />
+  <link rel="alternate" hreflang="es-US" href="{canonical}" />
+  <link rel="alternate" hreflang="en-US" href="{canonical}" />
+  <link rel="alternate" hreflang="x-default" href="{canonical}" />
   <meta name="geo.region" content="US-TX" />
   <meta name="geo.placename" content="Dallas-Fort Worth" />
+  <meta name="audience" content="Mexico, United States, Hispanic immigration clients" />
   <meta property="og:type" content="{meta["og_type"]}" />
   <meta property="og:site_name" content="Coyote Legal | Margaret A. Donnelly, P.C." />
   <meta property="og:title" content="{meta["title"]}" />
   <meta property="og:description" content="{meta["description"]}" />
   <meta property="og:url" content="{canonical}" />
   <meta property="og:image" content="https://coyotelegal.com/assets/images/logo.png" />
-  <meta property="og:locale" content="es_US" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:locale:alternate" content="es_US" />
   <meta property="og:locale:alternate" content="en_US" />'''
 
     text = re.sub(
-        r"  <title>.*?</title>\s*<meta name=\"description\" content=\"[^\"]*\" />",
+        r"  <title>.*?</title>\s*<meta name=\"description\" content=\"[^\"]*\" />\s*<meta name=\"robots\" content=\"[^\"]*\" />\s*<link rel=\"canonical\" href=\"[^\"]*\" />(?:\s*<link rel=\"alternate\" hreflang=\"[^\"]*\" href=\"[^\"]*\" />)?(?:\s*<meta name=\"geo\.region\"[^>]*>)?(?:\s*<meta name=\"geo\.placename\"[^>]*>)?(?:\s*<meta name=\"audience\"[^>]*>)?(?:\s*<meta property=\"og:[^\"]*\"[^>]*>)*",
         head_seo,
         text,
         count=1,
@@ -40,6 +46,14 @@ for filename, meta in seo.items():
         text = text.replace(
             '  <link rel="stylesheet" href="assets/css/style.css" />',
             '  <link rel="stylesheet" href="assets/css/style.css" />\n' + schema,
+        )
+    else:
+        text = re.sub(
+            r'<script type="application/ld\+json">.*?</script>',
+            schema,
+            text,
+            count=1,
+            flags=re.DOTALL,
         )
 
     text = text.replace(
