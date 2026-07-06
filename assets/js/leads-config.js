@@ -1,2 +1,2 @@
-// Paste your deployed Google Apps Script Web App URL here (see docs/GOOGLE-LEADS-SETUP.md).
-var LEADS_ENDPOINT = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+// Google Apps Script Web App — Coyote Legal Leads sheet
+var LEADS_ENDPOINT = 'https://script.google.com/a/macros/coyotelegal.com/s/AKfycbwRlt9k-8SxTjIv8yyW2mXl6QPeXqLVe7sYnNDh6mf_NZ1u4mErKjhjrBh_0Rh8t13o/exec';
