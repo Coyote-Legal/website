@@ -172,8 +172,9 @@
           <label for="sg-phone">Phone / Teléfono</label>
           <input type="tel" id="sg-phone" name="phone" required autocomplete="tel" />
         </div>
-        <button type="submit" class="btn btn-red">Download Study Guide / Descargar Guía</button>
-        <p class="form-note">Consultations are $125; results vary. See the disclaimer at the bottom of this page.</p>
+      <button type="submit" class="btn btn-red" id="sg-submit">Download Study Guide / Descargar Guía</button>
+      <p class="form-note" id="sg-status" hidden role="status"></p>
+      <p class="form-note">Consultations are $125; results vary. See the disclaimer at the bottom of this page.</p>
       </form>
     </div>
 
@@ -222,25 +223,34 @@
     </div>
   </footer>
 
+  <script src="assets/js/leads-config.js"></script>
+  <script src="assets/js/leads.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
     document.getElementById('study-guide-form').addEventListener('submit', function (e) {
       e.preventDefault();
-      var data = {
-        name: document.getElementById('sg-name').value,
-        email: document.getElementById('sg-email').value,
-        phone: document.getElementById('sg-phone').value,
+      var btn = document.getElementById('sg-submit');
+      var status = document.getElementById('sg-status');
+      btn.disabled = true;
+      btn.textContent = 'Sending… / Enviando…';
+      status.hidden = false;
+      status.textContent = 'Saving your info… / Guardando su información…';
+
+      coyoteSubmitLead({
         source: 'study-guide',
-        timestamp: new Date().toISOString()
-      };
-      try {
-        var leads = JSON.parse(localStorage.getItem('coyotelegal-leads') || '[]');
-        leads.push(data);
-        localStorage.setItem('coyotelegal-leads', JSON.stringify(leads));
-      } catch (err) { /* storage unavailable */ }
-      document.getElementById('lead-form').hidden = true;
-      document.getElementById('download-ready').hidden = false;
-      window.location.href = 'assets/freestudyguide.pdf';
+        name: document.getElementById('sg-name').value.trim(),
+        email: document.getElementById('sg-email').value.trim(),
+        phone: document.getElementById('sg-phone').value.trim()
+      }, function () {
+        document.getElementById('lead-form').hidden = true;
+        document.getElementById('download-ready').hidden = false;
+        var link = document.createElement('a');
+        link.href = 'assets/freestudyguide.pdf';
+        link.download = 'Coyote-Legal-Citizenship-Study-Guide.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
     });
   </script>
 </body>

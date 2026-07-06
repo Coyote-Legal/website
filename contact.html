@@ -195,9 +195,15 @@
         <label for="message">Message / Mensaje</label>
         <textarea id="message" name="message" rows="5" required></textarea>
       </div>
-      <button type="submit" class="btn btn-orange">Submit / Enviar</button>
+      <button type="submit" class="btn btn-orange" id="contact-submit">Submit / Enviar</button>
+      <p class="form-note" id="contact-status" hidden role="status"></p>
       <p class="form-note">Consultations are $125; results vary. See the disclaimer at the bottom of this page.</p>
     </form>
+
+    <div id="contact-success" hidden style="margin-top:2rem;padding:2rem;background:var(--cream);border-radius:4px;text-align:center;">
+      <p style="font-size:1.15rem;margin-bottom:0.5rem;">Thank you — we received your message.</p>
+      <p class="form-note">Gracias — recibimos su mensaje. We will be in touch soon.</p>
+    </div>
   </main>
 
   <a class="study-guide-float btn btn-red" href="study-guide.html">Free Citizenship Study Guide</a>
@@ -240,20 +246,30 @@
     </div>
   </footer>
 
+  <script src="assets/js/leads-config.js"></script>
+  <script src="assets/js/leads.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
     document.getElementById('contact-form').addEventListener('submit', function (e) {
       e.preventDefault();
-      var name = document.getElementById('name').value;
-      var email = document.getElementById('email').value;
-      var phone = document.getElementById('phone').value;
-      var office = document.getElementById('office').value;
-      var message = document.getElementById('message').value;
-      var subject = encodeURIComponent('Coyote Legal Contact — ' + name);
-      var body = encodeURIComponent(
-        'Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\nOffice: ' + office + '\n\n' + message
-      );
-      window.location.href = 'mailto:baba@coyotelegal.com?subject=' + subject + '&body=' + body;
+      var btn = document.getElementById('contact-submit');
+      var status = document.getElementById('contact-status');
+      btn.disabled = true;
+      btn.textContent = 'Sending… / Enviando…';
+      status.hidden = false;
+      status.textContent = 'Sending your message… / Enviando su mensaje…';
+
+      coyoteSubmitLead({
+        source: 'contact',
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        office: document.getElementById('office').value,
+        message: document.getElementById('message').value.trim()
+      }, function () {
+        document.getElementById('contact-form').hidden = true;
+        document.getElementById('contact-success').hidden = false;
+      });
     });
   </script>
 </body>
